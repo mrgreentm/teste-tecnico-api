@@ -3,6 +3,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Tasks } from './entities/tasks.entity';
+import { TasksUpdate } from './interfaces/task-update';
 
 @Injectable()
 export class TasksService {
@@ -26,6 +27,12 @@ export class TasksService {
   create(task: TasksInterface): Promise<Tasks> {
     const createdTask = this.tasksRepository.create(task);
     return this.tasksRepository.save(createdTask);
+  }
+
+  async update(id: number, task: TasksUpdate): Promise<any> {
+    const updated = await this.tasksRepository.update(id, task);
+
+    return updated;
   }
 
   async delete(id: number): Promise<void> {

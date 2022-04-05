@@ -1,7 +1,16 @@
+import { TasksUpdate } from './interfaces/task-update';
 import { TasksInterface } from './interfaces/tasks-interface';
 import { Tasks } from './entities/tasks.entity';
 import { TasksService } from './tasks.service';
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 
 @Controller('tasks')
 export class TasksController {
@@ -23,5 +32,12 @@ export class TasksController {
   @Delete(':id')
   async delete(@Param('id') id: number): Promise<void> {
     return await this.service.delete(id);
+  }
+  @Put(':id')
+  async update(
+    @Param('id') id: number,
+    @Body() task: TasksUpdate,
+  ): Promise<void> {
+    return await this.service.update(id, task);
   }
 }
