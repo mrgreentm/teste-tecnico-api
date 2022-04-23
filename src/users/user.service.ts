@@ -12,34 +12,64 @@ export class UserService {
   ) {}
 
   async findAll(): Promise<UserInterface[]> {
-    return await this.userRepository.find({
-      relations: ['usersEntity'],
-    });
+    try {
+      return await this.userRepository.find({
+        relations: ['usersEntity'],
+      });
+    } catch (error) {
+      throw new Error(
+        'Desculpe, tivemos um erro interno. Por favor, tente novamente mais tarde',
+      );
+    }
   }
 
   async findOne(id: number): Promise<UserInterface> {
-    const task = await this.userRepository.findOne(id);
-    if (!task) {
-      throw new NotFoundException('Desculpe, não encontramos esse usuário');
+    try {
+      const user = await this.userRepository.findOne(id);
+      if (!user) {
+        throw new NotFoundException('Desculpe, não encontramos esse usuário');
+      }
+      return user;
+    } catch (error) {
+      throw new Error(
+        'Desculpe, tivemos um erro interno. Por favor, tente novamente mais tarde',
+      );
     }
-    return task;
   }
 
   create(user: UserInterface): Promise<UserInterface> {
-    const createdUser = this.userRepository.create(user);
-    return this.userRepository.save(createdUser);
+    try {
+      const createdUser = this.userRepository.create(user);
+      return this.userRepository.save(createdUser);
+    } catch (error) {
+      throw new Error(
+        'Desculpe, tivemos um erro interno. Por favor, tente novamente mais tarde',
+      );
+    }
   }
 
   async update(id: number, task: any): Promise<any> {
-    const updated = await this.userRepository.update(id, task);
+    try {
+      const updated = await this.userRepository.update(id, task);
 
-    return updated;
+      return updated;
+    } catch (error) {
+      throw new Error(
+        'Desculpe, tivemos um erro interno. Por favor, tente novamente mais tarde',
+      );
+    }
   }
 
   async delete(id: number): Promise<void> {
-    if (!this.userRepository.findOne(id)) {
-      throw new NotFoundException('Desculpe, não encontramos esse usuário');
+    try {
+      if (!this.userRepository.findOne(id)) {
+        throw new NotFoundException('Desculpe, não encontramos esse usuário');
+      }
+      await this.userRepository.delete(id);
+    } catch (error) {
+      throw new Error(
+        'Desculpe, tivemos um erro interno. Por favor, tente novamente mais tarde',
+      );
     }
-    await this.userRepository.delete(id);
   }
 }

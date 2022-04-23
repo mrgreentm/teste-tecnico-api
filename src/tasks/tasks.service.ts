@@ -13,36 +13,66 @@ export class TasksService {
   ) {}
 
   async findAll(): Promise<TasksInterface[]> {
-    return await this.tasksRepository.find({
-      relations: ['usersEntity'],
-    });
+    try {
+      return await this.tasksRepository.find({
+        relations: ['usersEntity'],
+      });
+    } catch (error) {
+      throw new Error(
+        'Desculpe, tivemos um erro interno. Por favor, tente novamente mais tarde',
+      );
+    }
   }
 
   async findOne(id: number): Promise<TasksInterface> {
-    const task = await this.tasksRepository.findOne(id, {
-      relations: ['usersEntity'],
-    });
-    if (!task) {
-      throw new NotFoundException('Desculpe, não encontramos essa task');
+    try {
+      const task = await this.tasksRepository.findOne(id, {
+        relations: ['usersEntity'],
+      });
+      if (!task) {
+        throw new NotFoundException('Desculpe, não encontramos essa task');
+      }
+      return task;
+    } catch (error) {
+      throw new Error(
+        'Desculpe, tivemos um erro interno. Por favor, tente novamente mais tarde',
+      );
     }
-    return task;
   }
 
   create(task: TasksInterface): Promise<TasksInterface> {
-    const createdTask = this.tasksRepository.create(task);
-    return this.tasksRepository.save(createdTask);
+    try {
+      const createdTask = this.tasksRepository.create(task);
+      return this.tasksRepository.save(createdTask);
+    } catch (error) {
+      throw new Error(
+        'Desculpe, tivemos um erro interno. Por favor, tente novamente mais tarde',
+      );
+    }
   }
 
   async update(id: number, task: TasksUpdate): Promise<any> {
-    const updated = await this.tasksRepository.update(id, task);
+    try {
+      const updated = await this.tasksRepository.update(id, task);
 
-    return updated;
+      return updated;
+    } catch (error) {
+      throw new Error(
+        'Desculpe, tivemos um erro interno. Por favor, tente novamente mais tarde',
+      );
+    }
   }
 
   async delete(id: number): Promise<void> {
-    if (!this.tasksRepository.findOne(id)) {
-      throw new NotFoundException('Desculpe, não encontramos essa task');
+    try {
+      if (!this.tasksRepository.findOne(id)) {
+        throw new NotFoundException('Desculpe, não encontramos essa task');
+      }
+      await this.tasksRepository.delete(id);
+    } catch (error) {
+      throw new Error(
+        'Desculpe, tivemos um erro interno. Por favor, tente novamente mais tarde',
+      );
     }
-    await this.tasksRepository.delete(id);
   }
 }
