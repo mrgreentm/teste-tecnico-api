@@ -14,9 +14,9 @@ export class UsersEntity {
   @Column()
   name: string;
 
-  @CreateDateColumn({ nullable: true })
+  @CreateDateColumn({ nullable: true, name: 'created_at' })
   createdAt?: Date;
 
-  @DeleteDateColumn({ nullable: true })
+  @DeleteDateColumn({ nullable: true, name: 'deleted_at' })
   deletedAt?: Date;
 }

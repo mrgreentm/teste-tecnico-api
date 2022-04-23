@@ -1,6 +1,5 @@
 import { TasksUpdate } from './interfaces/task-update';
 import { TasksInterface } from './interfaces/tasks-interface';
-import { Tasks } from './entities/tasks.entity';
 import { TasksService } from './tasks.service';
 import {
   Body,
@@ -17,16 +16,16 @@ export class TasksController {
   constructor(private service: TasksService) {}
 
   @Get()
-  async findAll(): Promise<Tasks[]> {
+  async findAll(): Promise<TasksInterface[]> {
     const tasks = await this.service.findAll();
     return tasks;
   }
   @Get(':id')
-  async findOne(@Param('id') id: number): Promise<Tasks> {
+  async findOne(@Param('id') id: number): Promise<TasksInterface> {
     return await this.service.findOne(id);
   }
   @Post()
-  create(@Body() task: TasksInterface): Promise<Tasks> {
+  create(@Body() task: TasksInterface): Promise<TasksInterface> {
     return this.service.create(task);
   }
   @Delete(':id')

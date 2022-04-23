@@ -19,7 +19,7 @@ export class CreateTableTasks1650722237497 implements MigrationInterface {
       {
         name: 'user_id',
         type: 'INTEGER',
-        isNullable: false,
+        isNullable: true,
       },
       {
         name: 'title',

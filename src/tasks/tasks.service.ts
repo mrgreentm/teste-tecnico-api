@@ -12,19 +12,23 @@ export class TasksService {
     private tasksRepository: Repository<Tasks>,
   ) {}
 
-  async findAll(): Promise<Tasks[]> {
-    return await this.tasksRepository.find();
+  async findAll(): Promise<TasksInterface[]> {
+    return await this.tasksRepository.find({
+      relations: ['usersEntity'],
+    });
   }
 
-  async findOne(id: number): Promise<Tasks> {
-    const task = await this.tasksRepository.findOne(id);
+  async findOne(id: number): Promise<TasksInterface> {
+    const task = await this.tasksRepository.findOne(id, {
+      relations: ['usersEntity'],
+    });
     if (!task) {
       throw new NotFoundException('Desculpe, não encontramos essa task');
     }
     return task;
   }
 
-  create(task: TasksInterface): Promise<Tasks> {
+  create(task: TasksInterface): Promise<TasksInterface> {
     const createdTask = this.tasksRepository.create(task);
     return this.tasksRepository.save(createdTask);
   }

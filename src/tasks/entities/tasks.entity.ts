@@ -30,9 +30,9 @@ export class Tasks {
   @Column({ nullable: true })
   priority: string;
 
-  @CreateDateColumn({ nullable: true })
+  @CreateDateColumn({ nullable: true, name: 'created_at' })
   createdAt?: Date;
 
-  @DeleteDateColumn({ nullable: true })
+  @DeleteDateColumn({ nullable: true, name: 'deleted_at' })
   deletedAt?: Date;
 }
