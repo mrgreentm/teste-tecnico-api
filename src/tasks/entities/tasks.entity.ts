@@ -1,8 +1,11 @@
+import { UsersEntity } from './../../users/entities/user.entity';
 import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -16,6 +19,13 @@ export class Tasks {
 
   @Column({ nullable: true })
   description: string;
+
+  @Column({ name: 'user_id' })
+  userId: number;
+
+  @ManyToOne(() => UsersEntity, (usersEntity) => usersEntity.id)
+  @JoinColumn({ name: 'user_id' })
+  usersEntity: UsersEntity;
 
   @Column({ nullable: true })
   priority: string;
