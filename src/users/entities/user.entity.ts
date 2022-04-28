@@ -1,3 +1,4 @@
+import { hashPasswordTransform } from 'src/helper/cripto-transform';
 import {
   Column,
   CreateDateColumn,
@@ -13,6 +14,12 @@ export class UsersEntity {
 
   @Column()
   name: string;
+
+  @Column({ unique: true })
+  email: string;
+
+  @Column({ transformer: hashPasswordTransform })
+  password: string;
 
   @CreateDateColumn({ nullable: true, name: 'created_at' })
   createdAt?: Date;

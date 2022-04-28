@@ -37,7 +37,7 @@ export class CreateTableTasks1650722237497 implements MigrationInterface {
         name: 'priority',
         type: 'ENUM',
         enum: ['Alta', 'Média', 'Baixa'],
-        isNullable: false,
+        isNullable: true,
       },
       {
         name: 'created_at',

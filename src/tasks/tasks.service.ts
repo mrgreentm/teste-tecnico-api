@@ -4,6 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Tasks } from './entities/tasks.entity';
 import { TasksUpdate } from './interfaces/task-update';
+import { TasksCreateDto } from './dtos/tasks-create.dto';
 
 @Injectable()
 export class TasksService {
@@ -40,7 +41,7 @@ export class TasksService {
     }
   }
 
-  create(task: TasksInterface): Promise<TasksInterface> {
+  create(task: TasksCreateDto): Promise<TasksInterface> {
     try {
       const createdTask = this.tasksRepository.create(task);
       return this.tasksRepository.save(createdTask);

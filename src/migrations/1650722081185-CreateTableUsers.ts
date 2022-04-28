@@ -18,6 +18,18 @@ export class CreateTableUsers1650722081185 implements MigrationInterface {
         isNullable: false,
       },
       {
+        name: 'email',
+        type: 'VARCHAR',
+        length: '255',
+        isNullable: false,
+      },
+      {
+        name: 'password',
+        type: 'VARCHAR',
+        length: '255',
+        isNullable: false,
+      },
+      {
         name: 'created_at',
         type: 'TIMESTAMP',
         default: 'NOW()',

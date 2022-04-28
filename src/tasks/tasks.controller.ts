@@ -10,6 +10,7 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
+import { TasksCreateDto } from './dtos/tasks-create.dto';
 
 @Controller('tasks')
 export class TasksController {
@@ -25,7 +26,7 @@ export class TasksController {
     return await this.service.findOne(id);
   }
   @Post()
-  create(@Body() task: TasksInterface): Promise<TasksInterface> {
+  create(@Body() task: TasksCreateDto): Promise<TasksInterface> {
     return this.service.create(task);
   }
   @Delete(':id')
