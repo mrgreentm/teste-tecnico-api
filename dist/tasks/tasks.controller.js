@@ -17,6 +17,7 @@ const task_update_1 = require("./interfaces/task-update");
 const tasks_service_1 = require("./tasks.service");
 const common_1 = require("@nestjs/common");
 const tasks_create_dto_1 = require("./dtos/tasks-create.dto");
+const auth_guard_1 = require("../auth/auth.guard");
 let TasksController = class TasksController {
     constructor(service) {
         this.service = service;
@@ -40,12 +41,14 @@ let TasksController = class TasksController {
 };
 __decorate([
     (0, common_1.Get)(),
+    (0, common_1.UseGuards)(auth_guard_1.JwtAuthGuard),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], TasksController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)(':id'),
+    (0, common_1.UseGuards)(auth_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
@@ -53,6 +56,7 @@ __decorate([
 ], TasksController.prototype, "findOne", null);
 __decorate([
     (0, common_1.Post)(),
+    (0, common_1.UseGuards)(auth_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [tasks_create_dto_1.TasksCreateDto]),
@@ -60,6 +64,7 @@ __decorate([
 ], TasksController.prototype, "create", null);
 __decorate([
     (0, common_1.Delete)(':id'),
+    (0, common_1.UseGuards)(auth_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
@@ -67,6 +72,7 @@ __decorate([
 ], TasksController.prototype, "delete", null);
 __decorate([
     (0, common_1.Put)(':id'),
+    (0, common_1.UseGuards)(auth_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),

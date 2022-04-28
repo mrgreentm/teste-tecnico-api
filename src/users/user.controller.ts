@@ -27,7 +27,6 @@ export class UserController {
     return await this.userService.findUserByEmail(email);
   }
   @Post()
-  @UseGuards(JwtAuthGuard)
   async create(@Body() user: UserCreateDto): Promise<UserInterface> {
     return await this.userService.create(user);
   }

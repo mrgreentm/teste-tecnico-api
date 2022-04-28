@@ -45,7 +45,6 @@ export class UserService {
       });
       return user;
     } catch (error) {
-      console.log(error);
       throw new Error(
         'Desculpe, tivemos um erro interno. Por favor, tente novamente mais tarde',
       );
