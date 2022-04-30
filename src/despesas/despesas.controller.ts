@@ -36,7 +36,7 @@ export class DespesasController {
   }
   @Post('carteira')
   @UseGuards(JwtAuthGuard)
-  value(@Body() userId: {userId:number}): Promise<any> {
+  value(@Body() userId: { userId: number }): Promise<any> {
     return this.service.findValueOfCarter(userId);
   }
   @Delete(':id')

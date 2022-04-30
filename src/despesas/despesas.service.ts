@@ -11,7 +11,7 @@ export class DespesasService {
   constructor(
     @InjectRepository(DespesasEntity)
     private despesasRepository: Repository<DespesasEntity>,
-  ) { }
+  ) {}
 
   async findAll(): Promise<DespesasInterface[]> {
     try {
@@ -56,7 +56,7 @@ export class DespesasService {
     try {
       const updated = await this.despesasRepository.update(id, despesa);
 
-      return "Despesa atualizada com sucesso!";
+      return 'Despesa atualizada com sucesso!';
     } catch (error) {
       throw new Error(
         'Desculpe, tivemos um erro interno. Por favor, tente novamente mais tarde',
@@ -79,24 +79,24 @@ export class DespesasService {
 
   async findValueOfCarter({ userId }: { userId: number }): Promise<any> {
     try {
-      const value = await this.despesasRepository.find({ where: { userId } })
+      const value = await this.despesasRepository.find({ where: { userId } });
       const gastos = [];
       const ganhos = [];
       for (let i = 0; i < value.length; i++) {
         const element = value[i].ganhos;
         element !== null ? ganhos.push(element) : ganhos.push(0);
-        const { alimentacao, educacao, entretenimento, saude, transporte } = value[i]
+        const { alimentacao, educacao, entretenimento, saude, transporte } =
+          value[i];
         alimentacao !== null ? gastos.push(element) : gastos.push(0);
         educacao !== null ? gastos.push(element) : gastos.push(0);
         entretenimento !== null ? gastos.push(element) : gastos.push(0);
         saude !== null ? gastos.push(element) : gastos.push(0);
         transporte !== null ? gastos.push(element) : gastos.push(0);
       }
-      const ganhosTotais = ganhos.reduce((soma, i) => soma + i)
-      const gastosTotais = gastos.reduce((soma, i) => soma + i)
-      
-      return { saldo: ganhosTotais - gastosTotais }
+      const ganhosTotais = ganhos.reduce((soma, i) => soma + i);
+      const gastosTotais = gastos.reduce((soma, i) => soma + i);
 
+      return { saldo: ganhosTotais - gastosTotais };
     } catch (error) {
       throw new Error(
         'Desculpe, tivemos um erro interno. Por favor, tente novamente mais tarde',

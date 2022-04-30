@@ -57,7 +57,7 @@ let DespesasService = class DespesasService {
     async update(id, despesa) {
         try {
             const updated = await this.despesasRepository.update(id, despesa);
-            return "Despesa atualizada com sucesso!";
+            return 'Despesa atualizada com sucesso!';
         }
         catch (error) {
             throw new Error('Desculpe, tivemos um erro interno. Por favor, tente novamente mais tarde');
