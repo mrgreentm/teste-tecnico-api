@@ -7,7 +7,10 @@ export declare class DespesasController {
     constructor(service: DespesasService);
     findAll(): Promise<DespesasInterface[]>;
     findOne(id: number): Promise<DespesasInterface>;
-    create(task: DespesasCreateDto): Promise<DespesasInterface>;
+    create(despesas: DespesasCreateDto): Promise<DespesasInterface>;
+    value(userId: {
+        userId: number;
+    }): Promise<any>;
     delete(id: number): Promise<void>;
     update(id: number, task: DespesasUpdate): Promise<void>;
 }

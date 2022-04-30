@@ -74,6 +74,31 @@ let DespesasService = class DespesasService {
             throw new Error('Desculpe, tivemos um erro interno. Por favor, tente novamente mais tarde');
         }
     }
+    async findValueOfCarter({ userId }) {
+        try {
+            const value = await this.despesasRepository.find({ where: { userId } });
+            const gastos = [];
+            const ganhos = [];
+            for (let i = 0; i < value.length; i++) {
+                const element = value[i].ganhos;
+                element !== null ? ganhos.push(element) : ganhos.push(0);
+                const { alimentacao, educacao, entretenimento, saude, transporte } = value[i];
+                alimentacao !== null ? gastos.push(element) : gastos.push(0);
+                educacao !== null ? gastos.push(element) : gastos.push(0);
+                entretenimento !== null ? gastos.push(element) : gastos.push(0);
+                saude !== null ? gastos.push(element) : gastos.push(0);
+                transporte !== null ? gastos.push(element) : gastos.push(0);
+            }
+            const ganhosTotais = ganhos.reduce((soma, i) => soma + i);
+            const gastosTotais = gastos.reduce((soma, i) => soma + i);
+            console.log(ganhosTotais);
+            console.log(gastosTotais);
+            return { saldo: ganhosTotais - gastosTotais };
+        }
+        catch (error) {
+            throw new Error('Desculpe, tivemos um erro interno. Por favor, tente novamente mais tarde');
+        }
+    }
 };
 DespesasService = __decorate([
     (0, common_1.Injectable)(),

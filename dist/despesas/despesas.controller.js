@@ -23,14 +23,17 @@ let DespesasController = class DespesasController {
         this.service = service;
     }
     async findAll() {
-        const tasks = await this.service.findAll();
-        return tasks;
+        const despesas = await this.service.findAll();
+        return despesas;
     }
     async findOne(id) {
         return await this.service.findOne(id);
     }
-    create(task) {
-        return this.service.create(task);
+    create(despesas) {
+        return this.service.create(despesas);
+    }
+    value(userId) {
+        return this.service.findValueOfCarter(userId);
     }
     async delete(id) {
         return await this.service.delete(id);
@@ -62,6 +65,14 @@ __decorate([
     __metadata("design:paramtypes", [despesas_create_dto_1.DespesasCreateDto]),
     __metadata("design:returntype", Promise)
 ], DespesasController.prototype, "create", null);
+__decorate([
+    (0, common_1.Post)('carteira'),
+    (0, common_1.UseGuards)(auth_guard_1.JwtAuthGuard),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], DespesasController.prototype, "value", null);
 __decorate([
     (0, common_1.Delete)(':id'),
     (0, common_1.UseGuards)(auth_guard_1.JwtAuthGuard),

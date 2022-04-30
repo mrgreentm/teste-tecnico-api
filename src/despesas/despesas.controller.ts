@@ -21,8 +21,8 @@ export class DespesasController {
   @Get()
   @UseGuards(JwtAuthGuard)
   async findAll(): Promise<DespesasInterface[]> {
-    const tasks = await this.service.findAll();
-    return tasks;
+    const despesas = await this.service.findAll();
+    return despesas;
   }
   @Get(':id')
   @UseGuards(JwtAuthGuard)
@@ -31,8 +31,13 @@ export class DespesasController {
   }
   @Post()
   @UseGuards(JwtAuthGuard)
-  create(@Body() task: DespesasCreateDto): Promise<DespesasInterface> {
-    return this.service.create(task);
+  create(@Body() despesas: DespesasCreateDto): Promise<DespesasInterface> {
+    return this.service.create(despesas);
+  }
+  @Post('carteira')
+  @UseGuards(JwtAuthGuard)
+  value(@Body() userId: {userId:number}): Promise<any> {
+    return this.service.findValueOfCarter(userId);
   }
   @Delete(':id')
   @UseGuards(JwtAuthGuard)

@@ -11,4 +11,7 @@ export declare class DespesasService {
     create(despesa: DespesasCreateDto): Promise<DespesasInterface>;
     update(id: number, despesa: DespesasUpdate): Promise<any>;
     delete(id: number): Promise<void>;
+    findValueOfCarter({ userId }: {
+        userId: number;
+    }): Promise<any>;
 }
