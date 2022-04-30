@@ -4,8 +4,8 @@ exports.CreateTableTasks1650722237497 = void 0;
 const typeorm_1 = require("typeorm");
 class CreateTableTasks1650722237497 {
     constructor() {
-        this.tableTasks = new typeorm_1.Table({
-            name: 'tasks',
+        this.tableDespesas = new typeorm_1.Table({
+            name: 'despesas',
             columns: [
                 {
                     name: 'id',
@@ -20,21 +20,33 @@ class CreateTableTasks1650722237497 {
                     isNullable: true,
                 },
                 {
-                    name: 'title',
+                    name: 'entretenimento',
                     type: 'VARCHAR',
                     length: '255',
                     isNullable: false,
                 },
                 {
-                    name: 'description',
+                    name: 'alimentacao',
                     type: 'VARCHAR',
                     length: '255',
                     isNullable: true,
                 },
                 {
-                    name: 'priority',
-                    type: 'ENUM',
-                    enum: ['Alta', 'Média', 'Baixa'],
+                    name: 'educacao',
+                    type: 'VARCHAR',
+                    length: '255',
+                    isNullable: true,
+                },
+                {
+                    name: 'saude',
+                    type: 'VARCHAR',
+                    length: '255',
+                    isNullable: true,
+                },
+                {
+                    name: 'transporte',
+                    type: 'VARCHAR',
+                    length: '255',
                     isNullable: true,
                 },
                 {
@@ -49,8 +61,8 @@ class CreateTableTasks1650722237497 {
                 },
             ],
         });
-        this.tasksUserForeignKey = new typeorm_1.TableForeignKey({
-            name: 'fk_tasks_user_id',
+        this.despesasUserForeignKey = new typeorm_1.TableForeignKey({
+            name: 'fk_despesas_user_id',
             columnNames: ['user_id'],
             referencedColumnNames: ['id'],
             onDelete: 'CASCADE',
@@ -58,12 +70,12 @@ class CreateTableTasks1650722237497 {
         });
     }
     async up(queryRunner) {
-        await queryRunner.createTable(this.tableTasks);
-        await queryRunner.createForeignKey(this.tableTasks, this.tasksUserForeignKey);
+        await queryRunner.createTable(this.tableDespesas);
+        await queryRunner.createForeignKey(this.tableDespesas, this.despesasUserForeignKey);
     }
     async down(queryRunner) {
-        await queryRunner.dropTable(this.tableTasks);
-        await queryRunner.dropForeignKey(this.tableTasks, this.tasksUserForeignKey);
+        await queryRunner.dropTable(this.tableDespesas);
+        await queryRunner.dropForeignKey(this.tableDespesas, this.despesasUserForeignKey);
     }
 }
 exports.CreateTableTasks1650722237497 = CreateTableTasks1650722237497;

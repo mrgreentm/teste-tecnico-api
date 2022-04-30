@@ -12,7 +12,7 @@ import { JwtStrategy } from './jwt.strategy';
     TypeOrmModule.forFeature([UsersEntity]),
     JwtModule.register({
       secret: 'secretKey',
-      signOptions: { expiresIn: '60s' },
+      signOptions: { expiresIn: '2 days' },
     }),
   ],
   providers: [AuthService, UserService, JwtStrategy],

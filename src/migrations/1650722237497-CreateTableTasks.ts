@@ -6,8 +6,8 @@ import {
 } from 'typeorm';
 
 export class CreateTableTasks1650722237497 implements MigrationInterface {
-  private tableTasks: Table = new Table({
-    name: 'tasks',
+  private tableDespesas: Table = new Table({
+    name: 'despesas',
     columns: [
       {
         name: 'id',
@@ -22,21 +22,33 @@ export class CreateTableTasks1650722237497 implements MigrationInterface {
         isNullable: true,
       },
       {
-        name: 'title',
+        name: 'entretenimento',
         type: 'VARCHAR',
         length: '255',
         isNullable: false,
       },
       {
-        name: 'description',
+        name: 'alimentacao',
         type: 'VARCHAR',
         length: '255',
         isNullable: true,
       },
       {
-        name: 'priority',
-        type: 'ENUM',
-        enum: ['Alta', 'Média', 'Baixa'],
+        name: 'educacao',
+        type: 'VARCHAR',
+        length: '255',
+        isNullable: true,
+      },
+      {
+        name: 'saude',
+        type: 'VARCHAR',
+        length: '255',
+        isNullable: true,
+      },
+      {
+        name: 'transporte',
+        type: 'VARCHAR',
+        length: '255',
         isNullable: true,
       },
       {
@@ -52,23 +64,23 @@ export class CreateTableTasks1650722237497 implements MigrationInterface {
     ],
   });
 
-  private tasksUserForeignKey = new TableForeignKey({
-    name: 'fk_tasks_user_id',
+  private despesasUserForeignKey = new TableForeignKey({
+    name: 'fk_despesas_user_id',
     columnNames: ['user_id'],
     referencedColumnNames: ['id'],
     onDelete: 'CASCADE',
     referencedTableName: 'users',
   });
   public async up(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.createTable(this.tableTasks);
+    await queryRunner.createTable(this.tableDespesas);
     await queryRunner.createForeignKey(
-      this.tableTasks,
-      this.tasksUserForeignKey,
+      this.tableDespesas,
+      this.despesasUserForeignKey,
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable(this.tableTasks);
-    await queryRunner.dropForeignKey(this.tableTasks, this.tasksUserForeignKey);
+    await queryRunner.dropTable(this.tableDespesas);
+    await queryRunner.dropForeignKey(this.tableDespesas, this.despesasUserForeignKey);
   }
 }
