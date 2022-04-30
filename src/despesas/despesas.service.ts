@@ -94,10 +94,7 @@ export class DespesasService {
       }
       const ganhosTotais = ganhos.reduce((soma, i) => soma + i)
       const gastosTotais = gastos.reduce((soma, i) => soma + i)
-
-      console.log(ganhosTotais)
-      console.log(gastosTotais)
-
+      
       return { saldo: ganhosTotais - gastosTotais }
 
     } catch (error) {
