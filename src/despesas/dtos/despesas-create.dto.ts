@@ -8,21 +8,21 @@ export class DespesasCreateDto {
 
   @IsString()
   @IsOptional()
-  entretenimento: string;
+  entretenimento: number;
 
   @IsString()
   @IsOptional()
-  alimentacao: string;
+  alimentacao: number;
 
   @IsString()
   @IsOptional()
-  saude: string;
+  saude: number;
 
   @IsString()
   @IsOptional()
-  transporte: string;
+  transporte: number;
 
   @IsString()
   @IsOptional()
-  educacao: string;
+  educacao: number;
 }

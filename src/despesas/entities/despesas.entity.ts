@@ -15,10 +15,10 @@ export class DespesasEntity {
   id: number;
 
   @Column({ name: 'entretenimento', nullable: true })
-  entretenimento: string;
+  entretenimento: number;
 
   @Column({ nullable: true })
-  alimentacao: string;
+  alimentacao: number;
 
   @Column({ name: 'user_id' })
   userId: number;
@@ -28,13 +28,16 @@ export class DespesasEntity {
   usersEntity: UsersEntity;
 
   @Column({ nullable: true })
-  educacao: string;
+  educacao: number;
 
   @Column({ nullable: true })
-  saude: string;
+  saude: number;
 
   @Column({ nullable: true })
-  transporte: string;
+  transporte: number;
+
+  @Column({ nullable: true })
+  ganhos: number;
 
   @CreateDateColumn({ nullable: true, name: 'created_at' })
   createdAt?: Date;

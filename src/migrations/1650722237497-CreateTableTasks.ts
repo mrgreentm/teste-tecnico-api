@@ -23,32 +23,32 @@ export class CreateTableTasks1650722237497 implements MigrationInterface {
       },
       {
         name: 'entretenimento',
-        type: 'VARCHAR',
-        length: '255',
+        type: 'INTEGER',
         isNullable: false,
       },
       {
         name: 'alimentacao',
-        type: 'VARCHAR',
-        length: '255',
+        type: 'INTEGER',
         isNullable: true,
       },
       {
         name: 'educacao',
-        type: 'VARCHAR',
-        length: '255',
+        type: 'INTEGER',
         isNullable: true,
       },
       {
         name: 'saude',
-        type: 'VARCHAR',
-        length: '255',
+        type: 'INTEGER',
         isNullable: true,
       },
       {
         name: 'transporte',
-        type: 'VARCHAR',
-        length: '255',
+        type: 'INTEGER',
+        isNullable: true,
+      },
+      {
+        name: 'ganhos',
+        type: 'INTEGER',
         isNullable: true,
       },
       {

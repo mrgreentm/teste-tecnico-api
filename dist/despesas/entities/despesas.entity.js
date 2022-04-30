@@ -20,11 +20,11 @@ __decorate([
 ], DespesasEntity.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: 'entretenimento', nullable: true }),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], DespesasEntity.prototype, "entretenimento", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], DespesasEntity.prototype, "alimentacao", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: 'user_id' }),
@@ -37,16 +37,20 @@ __decorate([
 ], DespesasEntity.prototype, "usersEntity", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], DespesasEntity.prototype, "educacao", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], DespesasEntity.prototype, "saude", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], DespesasEntity.prototype, "transporte", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", Number)
+], DespesasEntity.prototype, "ganhos", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)({ nullable: true, name: 'created_at' }),
     __metadata("design:type", Date)

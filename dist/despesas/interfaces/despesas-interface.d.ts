@@ -1,11 +1,11 @@
 export declare class DespesasInterface {
     id: number;
-    entretenimento: string;
+    entretenimento: number;
     userId: number;
-    alimentacao: string;
-    saude: string;
-    transporte: string;
-    educacao: string;
+    alimentacao: number;
+    saude: number;
+    transporte: number;
+    educacao: number;
     createdAt?: Date;
     deletedAt?: Date;
 }

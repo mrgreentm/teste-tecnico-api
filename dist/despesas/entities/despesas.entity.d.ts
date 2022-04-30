@@ -1,13 +1,14 @@
 import { UsersEntity } from '../../users/entities/user.entity';
 export declare class DespesasEntity {
     id: number;
-    entretenimento: string;
-    alimentacao: string;
+    entretenimento: number;
+    alimentacao: number;
     userId: number;
     usersEntity: UsersEntity;
-    educacao: string;
-    saude: string;
-    transporte: string;
+    educacao: number;
+    saude: number;
+    transporte: number;
+    ganhos: number;
     createdAt?: Date;
     deletedAt?: Date;
 }
